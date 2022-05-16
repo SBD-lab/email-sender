@@ -33,12 +33,18 @@ fn main() {
     let opts = Opts::parse();
     let str_address = opts.email;
     let str_password = opts.password;
-    let str_subject = format!("【セキュリティ通知】 {hostname} へのログイン検知");
+    let str_subject = format!("ログイン・ロック解除検知");
     let str_body = format!(
-        "【セキュリティ通知】 {hostname} へのログイン検知\n
-        {format_datetime} に <{username}> がログインしました。\n
-        身に覚えがない場合は直ちに PC の LAN ケーブルを取り外してください。\n
-        すぐに対応できない場合は管理者に連絡し、パスワードを変更してください。"
+        "【セキュリティ通知】\n
+        {hostname} への
+        ログイン・ロック解除を検知しました。\n
+        日時： {format_datetime}
+        ユーザ名： {username}\n
+        身に覚えがない場合は直ちに PC の
+        LAN ケーブルを取り外してください。\n
+        すぐに対応できない場合は管理者に連絡し、
+        パスワードを変更してください。
+        "
     );
 
     let email = EmailBuilder::new()
